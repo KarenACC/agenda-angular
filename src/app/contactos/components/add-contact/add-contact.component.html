@@ -1,0 +1,22 @@
+ <h4 class="text-center">Agrega un contacto</h4>
+
+  <form (ngSubmit)="emitContact()" >
+    <div class="row">
+      <div class="col-lg">
+        <input type="text" name="name" id="name" placeholder="Nombre" class="form-control form-control-lg mb-2" [(ngModel)]="contact.name" #name="ngModel" required>
+      </div>
+      <div class="col-lg">
+        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Número" class="form-control form-control-lg mb-2" [(ngModel)]="contact.phoneNumber">
+      </div>
+    </div>
+        <button class="btn btn-primary mt-2" type="submit">Agregar</button>
+  </form>
+  
+  <div class="alert alert-danger mt-2" role="alert" *ngIf="contact.phoneNumber.length >0 && contact.phoneNumber.length<=9 || contact.phoneNumber.length>10">
+    El número telefónico debe contener 10 dígitos.
+  </div>
+  
+  <div class="alert alert-danger mt-2" role="alert" [hidden]="name.valid || name.pristine" >
+    Coloca un nombre.
+  </div>
+  

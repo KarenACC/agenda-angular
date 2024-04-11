@@ -1,0 +1,21 @@
+<h4>Tus contactos</h4>
+<ul class="list-group">
+   <li *ngFor="let contact of agenda; let i = index; let even = even" 
+        class="d-flex justify-content-between mb-2 list-group-item"
+        [ngClass]="{'list-group-item-success' : even}">
+    <div>
+        <strong class="text-primary">{{i+1}}</strong>
+        <strong>
+            {{contact.name | titlecase}}
+        </strong>
+        - {{contact.phoneNumber}}
+
+    </div>
+    <div>
+
+        <button class="btn btn-success me-2" (click)="editContact(contact)" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
+        <button class="btn btn-danger" (click)="onDeleteContact(contact.id!)">X</button>
+    </div>
+</li>
+</ul>
+
